@@ -10,7 +10,7 @@ export default class UserService extends Service<IUser> {
     super(model);
   }
 
-  public async create(user: IUser): Promise<string> {
+  public create = async (user: IUser): Promise<string> => {
     const { name, email, password } = user;
 
     const findUser = await this._model.getByField('email', email); 
@@ -24,11 +24,11 @@ export default class UserService extends Service<IUser> {
     return token;
   }
 
-  public async getAll(): Promise<IUser[]> {
+  public getAll = async (): Promise<IUser[]> => {
     return this._model.getAll();
   }
 
-  public async getById(id: string): Promise<IUser | null> {
+  public getById = async (id: string): Promise<IUser | null> => {
     return this._model.getById(id);
   }
 }
