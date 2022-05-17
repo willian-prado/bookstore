@@ -1,9 +1,10 @@
-import Controller from "./Controller";
 import { IUser } from "../utils/interfaces/IUser";
-import UserService from "../services/UserServices";
+import Controller from "./Controller";
+import Service from "../services/Service";
+import UserService from "../services/UserService";
 
 export default class UserController extends Controller<IUser> {
-  constructor(service: UserService) {
+  constructor(service: Service<IUser> = new UserService()) {
     super(service);
   }
 }
