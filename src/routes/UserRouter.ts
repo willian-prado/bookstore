@@ -1,13 +1,11 @@
 import { IUser } from "../utils/interfaces/IUser";
 import CustomRouter from "./CustomRouter";
-import UserModel from "../models/UserModel";
-import UserService from "../services/UserServices";
-import UserController from "../controllers/UserController";
+import Controller from "../controllers/Controller";
 
-class UserRouter extends CustomRouter<IUser> {
+export default class UserRouter extends CustomRouter<IUser> {
   protected _route: string = "/users";
 
-  constructor(controller: UserController) {
+  constructor(controller: Controller<IUser>) {
     super(controller);
     this._routes();
   }
@@ -18,9 +16,3 @@ class UserRouter extends CustomRouter<IUser> {
     this._router.get(`${this._route}/:id`, this._controller.getById);
   }
 }
-
-const userModel = new UserModel();
-const userService = new UserService(userModel);
-const userController = new UserController(userService);
-
-export default new UserRouter(userController).router;
