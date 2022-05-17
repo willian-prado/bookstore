@@ -2,8 +2,7 @@ import express, { Request as Req, Response as Res } from 'express';
 
 export default class App {
   private _app: express.Application;
-  get app(): express.Application { return this._app }
-
+  
   constructor() {
     this._app = express();
     this._app.use(express.json());
@@ -18,5 +17,9 @@ export default class App {
 
   public addRouter(router: express.Router): void {
     this._app.use(router);
+  }
+
+  public addErrorHandler(middleware: express.ErrorRequestHandler): void {
+    this._app.use(middleware);
   }
 }
