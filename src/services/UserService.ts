@@ -4,9 +4,10 @@ import Service from "./Service";
 import UserModel from "../models/UserModel";
 import AuthUser from "../utils/auth/AuthUser";
 import { EMAIL_REGISTERED } from "../utils/errors";
+import Model from '../models/Model';
 
 export default class UserService extends Service<IUser> {
-  constructor(model: UserModel) {
+  constructor(model: Model<IUser> = new UserModel()) {
     super(model);
   }
 
