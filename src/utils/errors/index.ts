@@ -6,3 +6,7 @@ export const EMAIL_REGISTERED: CustomError = new CustomError(
   "E-mail already registered"
 );
 
+export const USER_INVALID: CustomError = new CustomError(
+  HttpStatusCode.UNAUTHORIZED,
+  'Invalid username or password',
+);
