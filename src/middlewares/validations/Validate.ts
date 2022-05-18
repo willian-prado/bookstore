@@ -11,12 +11,12 @@ export default abstract class Validate {
   public validateBody = async (req: Req, res: Res, next: Next): Promise <typeof res | void> => {
     try {
       const result = this._schema.validate(req.body);
-        if (result.error) {
-          return next(result.error);
-        }
-      next();
+      if (result.error) {
+        return next(result.error);
+      }
+      return next();
     } catch (error) {
       return next(error);
     }
-  }
+  };
 }

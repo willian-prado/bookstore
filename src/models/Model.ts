@@ -1,4 +1,4 @@
-import { Model as M } from "mongoose"
+import { Model as M } from 'mongoose';
 
 export default abstract class Model<T> {
   protected schema: M<T>;
@@ -19,7 +19,15 @@ export default abstract class Model<T> {
     return this.schema.findById(id);
   }
 
-  public async getByField(field: string, value: string ): Promise<T | null> {
+  public async getByField(field: string, value: string): Promise<T | null> {
     return this.schema.findOne().where(field, value);
+  }
+
+  public async update(id: string, data: T): Promise<T | null> {
+    return this.schema.findByIdAndUpdate(id, data, { new: true });
+  }
+
+  public async delete(id: string): Promise<T | null> {
+    return this.schema.findByIdAndDelete(id);
   }
 }

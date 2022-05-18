@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi from 'joi';
 
 export default Joi.object().keys({
   name: Joi.string().min(3).required().messages({
@@ -17,4 +17,3 @@ export default Joi.object().keys({
     'any.required': 'Email is required',
   }),
 });
-

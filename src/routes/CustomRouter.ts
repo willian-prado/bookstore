@@ -1,9 +1,11 @@
-import { Router } from "express";
-import Controller from "../controllers/Controller";
+import { Router } from 'express';
+import Controller from '../controllers/Controller';
 
 export default abstract class CustomRouter<T> {
   protected _router: Router;
+
   protected abstract _route: string;
+
   protected _controller: Controller<T>;
 
   constructor(controller: Controller<T>) {

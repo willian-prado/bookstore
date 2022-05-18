@@ -2,7 +2,7 @@ import express, { Request as Req, Response as Res } from 'express';
 
 export default class App {
   private _app: express.Application;
-  
+
   constructor() {
     this._app = express();
     this._app.use(express.json());
