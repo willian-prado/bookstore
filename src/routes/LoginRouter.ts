@@ -6,6 +6,8 @@ import ValidateLogin from '../middlewares/validations/ValidateLogin';
 export default class LoginRouter {
   private _router: Router;
 
+  private _route = '/login';
+
   private _controller: LoginController;
 
   private _validate: Validate;
@@ -26,7 +28,7 @@ export default class LoginRouter {
 
   private _routes(): void {
     this._router.post(
-      '/login',
+      this._route,
       this._validate.validateBody,
       this._controller.login,
     );

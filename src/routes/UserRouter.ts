@@ -6,7 +6,7 @@ import UserController from '../controllers/UserController';
 import ValidateUser from '../middlewares/validations/ValidateUser';
 
 export default class UserRouter extends CustomRouter<IUser> {
-  protected _route: string = '/users';
+  protected _route = '/users';
 
   private _validate: Validate;
 
