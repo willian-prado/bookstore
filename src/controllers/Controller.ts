@@ -1,6 +1,6 @@
-import Service from "../services/Service";
-import HttpStatusCode from "../utils/enums/HttpStatusCodes";
-import { Request as Req, Response as Res, NextFunction as Next } from "express";
+import { Request as Req, Response as Res, NextFunction as Next } from 'express';
+import Service from '../services/Service';
+import HttpStatusCode from '../utils/enums/HttpStatusCodes';
 
 export default abstract class Controller<T> {
   protected _service: Service<T>;
@@ -16,7 +16,7 @@ export default abstract class Controller<T> {
     } catch (error) {
       return next(error);
     }
-  }
+  };
 
   public getAll = async (req: Req, res: Res, next: Next): Promise<typeof res | void> => {
     try {
@@ -25,7 +25,7 @@ export default abstract class Controller<T> {
     } catch (error) {
       return next(error);
     }
-  }
+  };
 
   public getById = async (req: Req, res: Res, next: Next): Promise<typeof res | void> => {
     try {
@@ -34,5 +34,23 @@ export default abstract class Controller<T> {
     } catch (error) {
       return next(error);
     }
-  }
+  };
+
+  public update = async (req: Req, res: Res, next: Next): Promise<typeof res | void> => {
+    try {
+      const update = await this._service.update(req.params.id, req.body);
+      return res.status(HttpStatusCode.OK).json(update);
+    } catch (error) {
+      return next(error);
+    }
+  };
+
+  public delete = async (req: Req, res: Res, next: Next): Promise<typeof res | void> => {
+    try {
+      await this._service.delete(req.params.id);
+      return res.status(HttpStatusCode.NO_CONTENT).json({});
+    } catch (error) {
+      return next(error);
+    }
+  };
 }
