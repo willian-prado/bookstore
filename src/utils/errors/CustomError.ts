@@ -1,5 +1,6 @@
 export default class CustomError extends Error {
   public statusCode: number;
+
   public message: string;
 
   constructor(status: number, message: string) {
